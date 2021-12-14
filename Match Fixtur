@@ -1,0 +1,30 @@
+from itertools import combinations
+import random
+teams = ['a','b','c','d','e','f']
+comb = combinations(teams, 2)
+
+all_comb = []
+for ele in comb:
+    l = list(ele)
+    all_comb.append(l)
+
+random.shuffle(all_comb)
+
+matchday = list(combinations(all_comb,3))
+
+print(matchday)
+
+possible_matches = []
+
+for index, match in enumerate(matchday):
+   count = 0
+   for team in teams:
+       for i in range(0,3):
+            if team in match[i]:
+                count +=1
+                break
+            else:
+                continue
+   if count == 6 and index % 1 == 0:
+       print(match)
+       possible_matches.append(match)
